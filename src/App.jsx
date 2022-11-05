@@ -1,23 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Followers from "./components/Followers/Followers";
+import Following from "./components/Following/Following";
 import "./app.scss";
 import bodyBg from "./assets/bg-overlay.png";
 
 function App() {
   const [username, setUsername] = useState();
-  const [followers, setfollowers] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
 
   const getUserName = (e) => {
     setUsername(e.target.value);
   }
 
-  const fetchFollowers = () => {
+  const fetchAllData = () => {
+    // Followers data
+    fetch(`https://api.github.com/users/${username}/followers`)
+      .then(res => res.json())
+      .then(data => {
+        setFollowers(data);
+      });
+
+    //Following data
     fetch(`https://api.github.com/users/${username}/following`)
       .then(res => res.json())
       .then(data => {
-        setfollowers(data);
-        console.log(followers);
+        setFollowing(data);
       });
+
   };
 
   return (
@@ -33,11 +43,12 @@ function App() {
             onChange={getUserName}
           >
           </input>
-          <button onClick={fetchFollowers}>Let's Find</button>
+          <button onClick={fetchAllData}>Let's Find</button>
         </div>
       </div>
       <div className="follow-boxes">
         <Followers followers={followers} />
+        <Following following={following} />
       </div>
     </div>
   );

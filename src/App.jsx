@@ -1,0 +1,46 @@
+import { useState, useEffect } from "react";
+import Followers from "./components/Followers/Followers";
+import "./app.scss";
+import bodyBg from "./assets/bg-overlay.png";
+
+function App() {
+  const [username, setUsername] = useState();
+  const [followers, setfollowers] = useState([]);
+
+  const getUserName = (e) => {
+    setUsername(e.target.value);
+  }
+
+  const fetchFollowers = () => {
+    fetch(`https://api.github.com/users/${username}/following`)
+      .then(res => res.json())
+      .then(data => {
+        setfollowers(data);
+        console.log(followers);
+      });
+  };
+
+  return (
+    <div className="follow-container">
+      <img className="body-bg" src={bodyBg} alt="bodyBg" />
+      <div className="title">
+        <h3>Enter Github Username and Find Unfollowers</h3>
+        <div className="input-buttons">
+          <input
+            placeholder="github username"
+            class="input"
+            type="text"
+            onChange={getUserName}
+          >
+          </input>
+          <button onClick={fetchFollowers}>Let's Find</button>
+        </div>
+      </div>
+      <div className="follow-boxes">
+        <Followers followers={followers} />
+      </div>
+    </div>
+  );
+}
+
+export default App;

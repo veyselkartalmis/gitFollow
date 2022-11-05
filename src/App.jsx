@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="follow-container">
-      <a class="sign" href="https://github.com/veyselkartalmis" target="_new-blank">@veyselkartalmis</a>
+      <p className="sign">Made with ♡ by<a href="https://github.com/veyselkartalmis" target="_new-blank">Veysel Kartalmis</a> </p>
       <img className="body-bg" src={bodyBg} alt="bodyBg" />
       <div className="title">
         <h3>Find out your non-followers on GitHub!</h3>

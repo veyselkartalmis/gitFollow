@@ -29,7 +29,10 @@ function App() {
       .then(data => {
         setFollowing(data);
       });
+  };
 
+  const findNonFollowers = () => {
+    //NonFollowers filter
     const nonFollower = following.filter((user) => {
       return !followers.some((follower) => {
         return follower.id === user.id
@@ -37,10 +40,11 @@ function App() {
     });
 
     setNonFollowers(nonFollower);
-  };
+  }
 
   return (
     <div className="follow-container">
+      <a class="sign" href="https://github.com/veyselkartalmis" target="_new-blank">@veyselkartalmis</a>
       <img className="body-bg" src={bodyBg} alt="bodyBg" />
       <div className="title">
         <h3>Find out your non-followers on GitHub!</h3>
@@ -52,15 +56,16 @@ function App() {
             onChange={getUserName}
           >
           </input>
-          <button onClick={fetchAllData}>Let's Find</button>
+          <button onClick={fetchAllData}>Find Followers</button>
+          <button className={`non-follow ${followers.length > 0 ? 'active' : ''}`} onClick={findNonFollowers} disabled={followers.length > 0 ? false : true}>Find Unfollowers</button>
         </div>
-      </div>
+      </div >
       <div className="follow-boxes">
         <Followers followers={followers} />
         <Following following={following} />
         <NonFollowers nonFollowers={nonFollowers} />
       </div>
-    </div>
+    </div >
   );
 }
 

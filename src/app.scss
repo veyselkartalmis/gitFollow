@@ -6,6 +6,21 @@
     align-items: center;
     position: relative;
 
+    .sign {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 15px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: bold;
+        transition: 0.4s;
+
+        &:hover {
+            transform: scale(0.8);
+        }
+    }
+
     .body-bg {
         position: absolute;
         top: 0;
@@ -33,7 +48,7 @@
             gap: 50px;
 
             button {
-                width: 100px;
+                width: 130px;
                 background: #000;
                 color: #fff;
                 font-weight: bold;
@@ -43,6 +58,19 @@
                 &:hover {
                     box-shadow: 1px 1px 13px 0px rgba(38, 166, 65, 1);
                 }
+            }
+
+            .non-follow {
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.4s;
+                width: 0px;
+            }
+
+            .non-follow.active {
+                opacity: 1;
+                visibility: visible;
+                width: 130px;
             }
         }
 
@@ -58,6 +86,7 @@
             transition: 0.5s linear;
             font-family: monospace;
             letter-spacing: 1px;
+            color: #fff;
 
             &:focus {
                 border: 2px solid #fff;

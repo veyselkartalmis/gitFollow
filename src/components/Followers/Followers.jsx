@@ -2,7 +2,7 @@ import "./followers.scss";
 
 const Followers = ({ followers }) => {
     return (
-        <div className="box">
+        <div className={`box ${followers.length > 0 ? 'active' : ''}`}>
             <h3 className="box-title">Your Followers</h3>
             <div className="user-container">
                 {followers.map((follower) => (

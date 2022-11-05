@@ -11,6 +11,14 @@
     border-radius: 6px;
     max-height: 500px;
     overflow-y: scroll;
+    opacity: 0;
+    transform: translateY(100px);
+    visibility: hidden;
+    transition: 0.7s;
+
+    @media only screen and (max-width: 1440px) {
+        max-height: 300px;
+    }
 
     .user-container {
         display: flex;
@@ -40,4 +48,10 @@
             }
         }
     }
+}
+
+.box.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
 }

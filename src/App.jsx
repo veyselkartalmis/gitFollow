@@ -28,6 +28,8 @@ function App() {
         setFollowing(data);
       });
 
+    var difference = following.filter(x => !followers.includes(x));
+    console.log(difference);
   };
 
   return (

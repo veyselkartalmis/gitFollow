@@ -7,6 +7,22 @@
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(18, 18, 20, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(18, 18, 20, 1);
+}
+
 body {
   background: rgba(18, 18, 20, 1);
   color: #fff;

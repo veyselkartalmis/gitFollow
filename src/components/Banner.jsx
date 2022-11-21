@@ -11,6 +11,8 @@ export default function Banner({
 	setFollowing,
 	following,
 	setNonFollowers,
+	user,
+	setUser,
 }) {
 	getUserName = (e) => {
 		setUsername(e.target.value);
@@ -18,17 +20,26 @@ export default function Banner({
 
 	fetchAllData = () => {
 		// Followers data
-		fetch(`https://api.github.com/users/${username}/followers`)
+		fetch(`https://api.github.com/users/${username}`)
 			.then((res) => res.json())
 			.then((data) => {
-				setFollowers(data);
-			});
+				if (data.message === "Not Found") return setUser("Not Found");
 
-		//Following data
-		fetch(`https://api.github.com/users/${username}/following`)
-			.then((res) => res.json())
-			.then((data) => {
-				setFollowing(data);
+				setUser(data);
+
+				// Followers data
+				fetch(`https://api.github.com/users/${username}/followers`)
+					.then((res) => res.json())
+					.then((data) => {
+						setFollowers(data);
+					});
+
+				//Following data
+				fetch(`https://api.github.com/users/${username}/following`)
+					.then((res) => res.json())
+					.then((data) => {
+						setFollowing(data);
+					});
 			});
 	};
 
@@ -55,7 +66,11 @@ export default function Banner({
 				onChange={getUserName}
 			/>
 			<div className="buttons">
-				<button className="followers" onClick={fetchAllData}>
+				<button
+					className="followers"
+					onClick={fetchAllData}
+					disabled={!username.length}
+				>
 					Find Followers
 				</button>
 				<button
@@ -63,6 +78,7 @@ export default function Banner({
 						followers.length > 0 ? "active" : ""
 					}`}
 					onClick={findNonFollowers}
+					disabled={!followers.length}
 				>
 					Find Unfollowers
 				</button>

@@ -7,7 +7,8 @@ import Banner from "./components/Banner";
 import "./app.scss";
 
 function App() {
-	const [username, setUsername] = useState();
+	const [user, setUser] = useState(null);
+	const [username, setUsername] = useState("");
 	const [followers, setFollowers] = useState([]);
 	const [following, setFollowing] = useState([]);
 	const [nonFollowers, setNonFollowers] = useState([]);
@@ -16,6 +17,8 @@ function App() {
 	const getUserName = undefined;
 	const fetchAllData = undefined;
 	const findNonFollowers = undefined;
+
+	console.log(user);
 
 	return (
 		<>
@@ -31,12 +34,23 @@ function App() {
 				setFollowing={setFollowing}
 				following={following}
 				setNonFollowers={setNonFollowers}
+				user={user}
+				setUser={setUser}
 			/>
-			<div className="follow-container">
-				<Followers followers={followers} />
-				<Following following={following} />
-				<NonFollowers nonFollowers={nonFollowers} />
-			</div>
+
+			{user !== "Not Found" && user !== null ? (
+				<div className="follow-container">
+					<Followers followers={followers} />
+					<Following following={following} />
+					<NonFollowers nonFollowers={nonFollowers} />
+				</div>
+			) : (
+				<div>
+					{user === "Not Found"
+						? "Not Found"
+						: "Lütfen bir arama yapınız"}
+				</div>
+			)}
 		</>
 	);
 }

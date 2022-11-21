@@ -24,10 +24,10 @@
 
 	input {
 		width: 700px;
-		height: 62px;
+		height: 52px;
 		background: #ffffff;
 		border: 1px solid #ececec;
-		border-radius: 10px;
+		border-radius: 50px;
 		text-align: center;
 		margin: 20px 0;
 		font-size: 16px;
@@ -43,18 +43,21 @@
 			transition: background 0.2s;
 			padding-left: 20px;
 			padding-right: 20px;
+			&:disabled {
+				cursor: auto;
+			}
 		}
 
 		.followers {
 			margin-right: 10px;
-			&:hover {
+			&:hover:not(:disabled) {
 				background: #2ca5e1d2;
 			}
 		}
 
 		.unfollowers {
 			background: #ee5f5f7e;
-			&:hover {
+			&:hover:not(:disabled) {
 				background: #ee5f5fd3;
 			}
 		}

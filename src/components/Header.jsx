@@ -1,5 +1,5 @@
 import React from "react";
-import userSVG from ".././assets/user.svg";
+import userSVG from ".././assets/images/user.svg";
 
 export default function Header({ user }) {
 	console.log(user);

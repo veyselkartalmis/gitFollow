@@ -1,11 +1,8 @@
 import { useState } from "react";
-import Followers from "./components/Followers/Followers";
-import Following from "./components/Following/Following";
-import NonFollowers from "./components/NonFollowers/NonFollowers";
+import Followers from "./components/Followers";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
-import "./app.scss";
-import notFound from "./assets/notFound.webp";
+import notFound from "./assets/images/notFound.webp";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -40,8 +37,8 @@ function App() {
 			{user !== "Not Found" && user !== null ? (
 				<div className="follow-container">
 					<Followers follow={followers} />
-					<Followers follow={following} />
-					<Followers follow={nonFollowers} />
+					<Followers follow={following} bg="followingBg" />
+					<Followers follow={nonFollowers} bg="nonFollowers" />
 				</div>
 			) : (
 				<div className="container_down">

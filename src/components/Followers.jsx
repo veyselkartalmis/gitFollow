@@ -1,32 +1,28 @@
-import "../Followers/followers.scss";
 import { AiOutlineRight } from "react-icons/ai";
 
-const Followers = ({ following }) => {
+const Followers = ({ follow, bg }) => {
 	return (
-		<div
-			className={`box ${following.length > 0 ? "active" : ""}`}
-			style={{ backgroundColor: "#F6E4F5" }}
-		>
+		<div className={`box ${bg} ${follow.length > 0 ? "active" : ""}`}>
 			<h3 className="box-title">
-				Following Users{" "}
+				Your Followers{" "}
 				<span style={{ opacity: "0.8", fontSize: "12px" }}>
-					({following.length})
+					({follow.length})
 				</span>
 			</h3>
 			<div className="user-container">
-				{following.map((follow) => (
-					<div className="user" key={follow.id}>
+				{follow.map((follower) => (
+					<div className="user" key={follower.id}>
 						<a
 							className="user-name"
-							href={follow.html_url}
+							href={follower.html_url}
 							target="_new-blank"
 						>
 							<img
 								className="user-image"
-								src={follow.avatar_url}
-								alt={follow.login}
+								src={follower.avatar_url}
+								alt={follower.login}
 							/>
-							<span>{follow.login}</span>
+							<span>{follower.login}</span>
 							<AiOutlineRight
 								size="24px"
 								className="AiOutlineRight"

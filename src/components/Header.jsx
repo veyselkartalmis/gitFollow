@@ -1,4 +1,5 @@
 import React from "react";
+import userSVG from ".././assets/user.svg";
 
 export default function Header({ user }) {
 	console.log(user);
@@ -9,6 +10,17 @@ export default function Header({ user }) {
 					gitFollow
 				</a>
 			</span>
+
+			{!user && (
+				<div className="user-information">
+					<img
+						src={userSVG}
+						alt=""
+						style={{ width: "24px", height: "24px" }}
+					/>
+				</div>
+			)}
+
 			{user && user !== "Not Found" && (
 				<div className="user-information">
 					<span>{user.login}</span>

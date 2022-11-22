@@ -1,17 +1,17 @@
 import "./followers.scss";
 import { AiOutlineRight } from "react-icons/ai";
 
-const Followers = ({ followers }) => {
+const Followers = ({ follow }) => {
 	return (
-		<div className={`box ${followers.length > 0 ? "active" : ""}`}>
+		<div className={`box ${follow.length > 0 ? "active" : ""}`}>
 			<h3 className="box-title">
 				Your Followers{" "}
 				<span style={{ opacity: "0.8", fontSize: "12px" }}>
-					({followers.length})
+					({follow.length})
 				</span>
 			</h3>
 			<div className="user-container">
-				{followers.map((follower) => (
+				{follow.map((follower) => (
 					<div className="user" key={follower.id}>
 						<a
 							className="user-name"

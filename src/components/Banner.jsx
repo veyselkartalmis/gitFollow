@@ -41,20 +41,20 @@ export default function Banner({
 					.then((data) => {
 						setFollowing(data);
 					});
-
-				setNonFollowers(
-					//NonFollowers filter
-					following.filter((user) => {
-						return !followers.some((follower) => {
-							return follower.id === user.id;
-						});
-					})
-				);
 				//
 			});
 	};
 
-	//findNonFollowers = () => {};
+	findNonFollowers = () => {
+		setNonFollowers(
+			//NonFollowers filter
+			following.filter((user) => {
+				return !followers.some((follower) => {
+					return follower.id === user.id;
+				});
+			})
+		);
+	};
 
 	return (
 		<div className="banner">

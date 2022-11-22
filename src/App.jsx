@@ -39,9 +39,9 @@ function App() {
 
 			{user !== "Not Found" && user !== null ? (
 				<div className="follow-container">
-					<Followers followers={followers} />
-					<Following following={following} />
-					<NonFollowers nonFollowers={nonFollowers} />
+					<Followers follow={followers} />
+					<Followers follow={following} />
+					<Followers follow={nonFollowers} />
 				</div>
 			) : (
 				<div className="container_down">

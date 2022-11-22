@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
 export default function Banner({
 	getUserName,
@@ -18,9 +19,9 @@ export default function Banner({
 		setUsername(e.target.value);
 	};
 
-	fetchAllData = () => {
+	fetchAllData = async () => {
 		// Followers data
-		fetch(`https://api.github.com/users/${username}`)
+		await fetch(`https://api.github.com/users/${username}`)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.message === "Not Found") return setUser("Not Found");
@@ -40,31 +41,38 @@ export default function Banner({
 					.then((data) => {
 						setFollowing(data);
 					});
+
+				setNonFollowers(
+					//NonFollowers filter
+					following.filter((user) => {
+						return !followers.some((follower) => {
+							return follower.id === user.id;
+						});
+					})
+				);
+				//
 			});
 	};
 
-	findNonFollowers = () => {
-		//NonFollowers filter
-		const nonFollower = following.filter((user) => {
-			return !followers.some((follower) => {
-				return follower.id === user.id;
-			});
-		});
-
-		setNonFollowers(nonFollower);
-	};
+	//findNonFollowers = () => {};
 
 	return (
 		<div className="banner">
-			<h1>Find out your non-followers on GitHub!</h1>
-			<input
-				type="text"
-				name=""
-				id=""
-				placeholder="Github Username"
-				value={username}
-				onChange={getUserName}
-			/>
+			<h1>
+				Find out your <span>non-followers</span> on <span>GitHub!</span>
+			</h1>
+			<label htmlFor="" className="AiOutlineSearchLabel">
+				<AiOutlineSearch size="24px" className="AiOutlineSearch" />
+				<input
+					type="text"
+					name=""
+					id=""
+					placeholder="Github Username"
+					value={username}
+					onChange={getUserName}
+				/>
+			</label>
+
 			<div className="buttons">
 				<button
 					className="followers"

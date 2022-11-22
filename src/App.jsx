@@ -5,6 +5,7 @@ import NonFollowers from "./components/NonFollowers/NonFollowers";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import "./app.scss";
+import notFound from "./assets/notFound.webp";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -18,11 +19,9 @@ function App() {
 	const fetchAllData = undefined;
 	const findNonFollowers = undefined;
 
-	console.log(user);
-
 	return (
 		<>
-			<Header />
+			<Header user={user} />
 			<Banner
 				getUserName={getUserName}
 				setUsername={setUsername}
@@ -45,10 +44,12 @@ function App() {
 					<NonFollowers nonFollowers={nonFollowers} />
 				</div>
 			) : (
-				<div>
-					{user === "Not Found"
-						? "Not Found"
-						: "Lütfen bir arama yapınız"}
+				<div className="container_down">
+					{user === "Not Found" ? (
+						<img className="notFound" src={notFound} alt="arama" />
+					) : (
+						""
+					)}
 				</div>
 			)}
 		</>

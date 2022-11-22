@@ -53,9 +53,26 @@
 			align-items: center;
 			width: 100%;
 			padding: 3px;
+			position: relative;
 
 			span {
 				margin-left: 10px;
+			}
+
+			&:hover {
+				.AiOutlineRight {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+
+			.AiOutlineRight {
+				position: absolute;
+				right: 10px;
+				color: rgb(59, 168, 252);
+				visibility: hidden;
+				opacity: 0;
+				transition: all 0.2s;
 			}
 		}
 	}

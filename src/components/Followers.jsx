@@ -1,10 +1,10 @@
 import { AiOutlineRight } from "react-icons/ai";
 
-const Followers = ({ follow, bg }) => {
+const Followers = ({ follow, title, bg }) => {
 	return (
 		<div className={`box ${bg} ${follow.length > 0 ? "active" : ""}`}>
 			<h3 className="box-title">
-				Your Followers{" "}
+				{title}{" "}
 				<span style={{ opacity: "0.8", fontSize: "12px" }}>
 					({follow.length})
 				</span>

@@ -29,14 +29,14 @@ export default function Banner({
 				setUser(data);
 
 				// Followers data
-				fetch(`https://api.github.com/users/${username}/followers`)
+				fetch(`https://api.github.com/users/${username}/followers?per_page=100`)
 					.then((res) => res.json())
 					.then((data) => {
 						setFollowers(data);
 					});
 
 				//Following data
-				fetch(`https://api.github.com/users/${username}/following`)
+				fetch(`https://api.github.com/users/${username}/following?per_page=100`)
 					.then((res) => res.json())
 					.then((data) => {
 						setFollowing(data);
